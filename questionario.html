@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodle :: Questionário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="css/questionario.css" rel="stylesheet">
+</head>
+<body class="text-primary">
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Preparação de Questionário para Importação no Moodle via GIFT</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <section class="col-6">
+                    <label>Rótulo</label>
+                    <Select id="competencia">
+                        <option value="1">Competência 01 (C01)</option>
+                        <option value="2">Competência 02 (C02)</option>
+                        <option value="3">Competência 03 (C03)</option>
+                        <option value="4">Competência 04 (C04)</option>
+                        <option value="5">Competência 05 (C05)</option>
+                        <option value="6">Competência 06 (C06)</option>
+                        <option value="7">Competência 07 (C07)</option>
+                        <option value="8">Competência 08 (C08)</option>
+                        <option value="9">Competência 09 (C09)</option>
+                        <option value="10">Competência 10 (C10)</option>
+                        <option value="av">Avaliação da Disciplina (AV)</option>
+                        <option value="noa">Novas Oportunidades de Aprendizagem (NOA)</option>
+                    </Select>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col-6">
+                    <label>Entrada</label>
+                    <textarea id="entrada"></textarea>
+                </section>
+                <section class="col-6">
+                   <label>Saída</label>
+                    <textarea id="saida" readonly></textarea>
+                </section>
+            </div>
+            <div class="row">
+                <section class="text-center">
+                    <button id="ajuda" class="btn btn-warning">Ajuda</button>
+                    <button id="processar" class="btn btn-primary">Processar</button>
+                    <button id="copiar" class="btn btn-primary">Copiar</button>
+                    <button id="limpar" class="btn btn-danger">Limpar</button>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="js/questionario.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</body>
+</html>
