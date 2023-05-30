@@ -107,11 +107,82 @@ const button_copiar = document.querySelector('#copiar');
 
 const button_limpar = document.querySelector('#limpar');
 
+const button_mais_ferramentas = document.querySelector('#mais-ferramentas');
+
+const div_mais_ferramentas = document.querySelector('div.mais-ferramentas');
+
 button_ajuda.addEventListener('click', () => {
 
     window.location.assign('https://github.com/joelsonalves/moodle');
 
 });
+
+textarea_entrada.placeholder = [
+    '1) Texto da questão',
+    'Suporte da questão',
+    'A) alternativa 1',
+    'Feedback alternativa 1',
+    'b) alternativa 2',
+    'Feedback alternativa 2',
+    '',
+    '2- Texto da questão',
+    'Suporte da questão',
+    'a- alternativa 1',
+    'Feedback alternativa 1',
+    'B- alternativa 2',
+    'Feedback alternativa 2',
+    '',
+    '3 - Texto da questão',
+    'Suporte da questão',
+    'B - alternativa 1',
+    'Feedback alternativa 1',
+    'b - alternativa 2',
+    'Feedback alternativa 2',
+    '',
+    '4. Texto da questão',
+    'Suporte da questão',
+    'A. alternativa 1',
+    'Feedback alternativa 1',
+    'b. alternativa 2',
+    'Feedback alternativa 2',
+].join('\n');
+
+textarea_saida.placeholder = [
+    '::C01_Q01::Texto da questão',
+    'Suporte da questão',
+    '{',
+    '=alternativa 1',
+    '#Feedback alternativa 1',
+    '~alternativa 2',
+    '#Feedback alternativa 2',
+    '}',
+    '',
+    '::C01_Q02::Texto da questão',
+    'Suporte da questão',
+    '{',
+    '=alternativa 1',
+    '#Feedback alternativa 1',
+    '~alternativa 2',
+    '#Feedback alternativa 2',
+    '}',
+    '',
+    '::C01_Q03::Texto da questão',
+    'Suporte da questão',
+    '~alternativa 1',
+    '#Feedback alternativa 1',
+    '~alternativa 2',
+    '#Feedback alternativa 2',
+    '}',
+    '',
+    '::C01_Q04::Texto da questão',
+    'Suporte da questão',
+    '{',
+    '=alternativa 1',
+    '#Feedback alternativa 1',
+    '~alternativa 2',
+    '#Feedback alternativa 2',
+    '}',
+].join('\n');
 
 button_processar.addEventListener('click', () => {
 
@@ -138,4 +209,19 @@ button_limpar.addEventListener('click', () => {
     textarea_entrada.value = '';
     textarea_saida.value = '';
 
+});
+
+button_mais_ferramentas.addEventListener('click', () => {
+    if (div_mais_ferramentas.style.display === 'none') div_mais_ferramentas.style.display = 'block';
+    else div_mais_ferramentas.style.display = 'none';
+});
+
+button_mais_ferramentas.click();
+
+div_mais_ferramentas.querySelector('section.localizar-e-substituir button').addEventListener('click', () => {
+    let input_localizar = div_mais_ferramentas.querySelectorAll('section.localizar-e-substituir input')[0];
+    let input_substituir = div_mais_ferramentas.querySelectorAll('section.localizar-e-substituir input')[1];
+    textarea_entrada.value = textarea_entrada.value.replaceAll(input_localizar.value, input_substituir.value);
+    input_localizar.value = '';
+    input_substituir.value = '';
 });
