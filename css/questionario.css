@@ -42,3 +42,11 @@ div.row {
 div.row + div.row {
     margin: 25px 0 0 0;
 }
+
+input {
+    width: 100%;
+}
+
+input + input {
+    margin: 10px 0 0 0;
+}
