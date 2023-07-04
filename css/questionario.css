@@ -50,3 +50,8 @@ input {
 input + input {
     margin: 10px 0 0 0;
 }
+
+footer p {
+    padding: 20px 0;
+    text-align: center;
+}
