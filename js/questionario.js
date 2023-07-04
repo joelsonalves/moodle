@@ -13,9 +13,27 @@ const ajustar_texto = (arr_entrada, competencia) => {
         else index++;
     }
 
+    // Trocar o símbolo de igual (=) pelo código "&equals;"
+    for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('=', '&equals;');
+
+    // Trocar o símbolo de til (~) pelo código "&tilde;"
+    for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('~', '&tilde;');
+
+    // Trocar o símbolo dois dois pontos (::) pelo código "&colon;&colon;"
+    for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('::', '&colon;&colon;');
+
+    // Trocar o símbolo de chave abrindo ({) pelo código "&lbrace;"
+    for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('{', '&lbrace;');
+
+    // Trocar o símbolo de chave fechando (}) pelo código "&rbrace;"
+    for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('}', '&rbrace;');
+
+    // Trocar o símbolo de hashtag (#) pelo código "&num;"
+    for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('#', '&num;');
+
     // Colocar o símbolo de igual (=) na alternativa correta.
     [
-        'A) ', 'A. ', 'A- ', 'A - ',
+        'A) ', 'A. ', 'A- ', 'A - ', 'A– ', 'A – ',
     ].forEach((item) => {
         for (let i = 0; i < arr_entrada.length; i++) {
             if (arr_entrada[i].indexOf(item) === 0) arr_entrada[i] = arr_entrada[i].replace(item, '=');
@@ -25,10 +43,10 @@ const ajustar_texto = (arr_entrada, competencia) => {
 
     // Colocar o símbolo de til (~) nas demais alternativas.
     [
-        'B) ','B. ', 'B- ', 'B - ',
-        'C) ','C. ', 'C- ', 'C - ', 
-        'D) ','D. ', 'D- ', 'D - ',
-        'E) ','E. ', 'E- ', 'E - ',
+        'B) ','B. ', 'B- ', 'B - ', 'B– ', 'B – ',
+        'C) ','C. ', 'C- ', 'C - ', 'C– ', 'C – ',
+        'D) ','D. ', 'D- ', 'D - ', 'D– ', 'D – ',
+        'E) ','E. ', 'E- ', 'E - ', 'E– ', 'E – ',
     ].forEach((item) => {
         for (let i = 0; i < arr_entrada.length; i++) {
             if (arr_entrada[i].indexOf(item) === 0) arr_entrada[i] = arr_entrada[i].replace(item, '~');
@@ -47,7 +65,7 @@ const ajustar_texto = (arr_entrada, competencia) => {
     for (let i = 0; i < arr_entrada.length; i++) {
         for (let j = 1; j <= 20; j++) {
             [
-                `${j}) `, `${j}. `, `${j}- `, `${j} - `
+                `${j}) `, `${j}. `, `${j}- `, `${j} - `, `${j}–`, `${j} – `,
             ].forEach((item) => {
                 if (arr_entrada[i].indexOf(item) === 0) {
                     if (competencia.toLowerCase() === 'noa') arr_entrada[i] = arr_entrada[i].replace(item, `::NOA_Q${(j < 10) ? ('0') : ('')}${j}::`);
@@ -110,6 +128,22 @@ const button_limpar = document.querySelector('#limpar');
 const button_mais_ferramentas = document.querySelector('#mais-ferramentas');
 
 const div_mais_ferramentas = document.querySelector('div.mais-ferramentas');
+
+const button_baixar = document.querySelector('#baixar');
+
+const baixar_arquivo_txt = () => {
+
+    let texto = textarea_saida.value;
+    
+    let link = document.createElement('a');
+    link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(texto);
+    link.download = `questionario_${select_competencia.value}.txt`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+};
 
 button_ajuda.addEventListener('click', () => {
 
@@ -201,6 +235,14 @@ button_copiar.addEventListener('click', async () => {
     if (textarea_entrada.value !== '') button_processar.click();
     if (textarea_saida.value !== '') await navigator.clipboard.writeText(textarea_saida.value);
     else alert('Por hora, não há nada para ser colocado na área de transferência!');
+
+});
+
+button_baixar.addEventListener('click', () => {
+
+    if (textarea_entrada.value !== '') button_processar.click();
+    if (textarea_saida.value !== '') baixar_arquivo_txt();
+    else alert('Por hora, não há nada para ser baixado!');
 
 });
 
