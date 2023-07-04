@@ -31,6 +31,9 @@ const ajustar_texto = (arr_entrada, competencia) => {
     // Trocar o símbolo de hashtag (#) pelo código "&num;"
     for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('#', '&num;');
 
+    // Trocar o símbolo de tabulação (\t) pelo ""
+    for (let i = 0; i < arr_entrada.length; i++) arr_entrada[i] = arr_entrada[i].replaceAll('\t', '');
+
     // Colocar o símbolo de igual (=) na alternativa correta.
     [
         'A) ', 'A. ', 'A- ', 'A - ', 'A– ', 'A – ',
