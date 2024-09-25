@@ -66,7 +66,7 @@ const ajustar_texto = (arr_entrada, competencia) => {
 
     // Adicionar a competência ou NOA e, o número da questão.
     for (let i = 0; i < arr_entrada.length; i++) {
-        for (let j = 1; j <= 1000; j++) {
+        for (let j = 1; j <= 99; j++) {
             [
                 `${j}) `, `${j}. `, `${j}- `, `${j} - `, `${j}–`, `${j} – `,
             ].forEach((item) => {
